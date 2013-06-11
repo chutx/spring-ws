@@ -1,33 +1,15 @@
 package com.training.architecture.java.springwebapp.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name="person")
 public class Person {
 
-	@Id
-	@Column(name="id")
-	private Long id;
-	@Column(name="first_name")
-	private String name;
-	@Column(name="last_name")
+	private String firstName;
 	private String lastName;
 	
-	public Long getId() {
-		return id;
+	public String getFirstName() {
+		return firstName;
 	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 	public String getLastName() {
 		return lastName;
@@ -35,4 +17,5 @@ public class Person {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+	
 }

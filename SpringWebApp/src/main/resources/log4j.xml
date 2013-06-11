@@ -31,7 +31,7 @@
 <!-- 		<appender-ref ref="FileAppender" /> -->
 <!-- 	</category> -->
 
-	<logger name="com.training.architecture.java.basicwebapp" additivity="true">>
+	<logger name="com.training.architecture.java.springwebapp" additivity="true">>
 		<level value="debug"></level>
 		<appender-ref ref="ConsoleAppender"></appender-ref>
 	</logger>

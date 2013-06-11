@@ -5,13 +5,27 @@
 <web-app>
 	<display-name>Archetype Created Web Application</display-name>
 
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath*:META-INF/spring/*-context.xml</param-value>
+		<description>
+			parameter to specify which context should be loaded by the listener(class)
+			ContextLoaderListerner
+			from spring
+		</description>
+	</context-param>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
 	<servlet>
 		<servlet-name>webapp-context</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-<!-- 		<init-param> -->
-<!-- 			<param-name>contextconfigLocation</param-name> -->
-<!-- 			<param-value>/WEB-INF/webapp-context.xml, /spring/web-context.xml</param-value> -->
-<!-- 		</init-param> -->
+		<!-- <init-param> -->
+		<!-- <param-name>contextconfigLocation</param-name> -->
+		<!-- <param-value>/WEB-INF/webapp-context.xml, /spring/web-context.xml</param-value> -->
+		<!-- </init-param> -->
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 
