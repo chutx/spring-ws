@@ -1,10 +1,20 @@
 package com.training.architecture.java.springwebapp.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="person")
 public class Person {
 
+	@Id
+	@Column(name="id")
 	private Long id;
+	@Column(name="first_name")
 	private String name;
+	@Column(name="last_name")
 	private String lastName;
 	
 	public Long getId() {
