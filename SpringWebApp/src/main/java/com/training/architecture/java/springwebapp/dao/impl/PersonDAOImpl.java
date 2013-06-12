@@ -12,17 +12,14 @@ import org.springframework.transaction.annotation.Transactional;
 import com.training.architecture.java.springwebapp.dao.PersonDao;
 import com.training.architecture.java.springwebapp.entities.PersonPO;
 
-@Repository
+@Repository("personDao")
 public class PersonDAOImpl implements PersonDao {
 
+	@PersistenceContext
 	private EntityManager entityManager;
 	
 	public EntityManager getEntityManager() {
         return entityManager;
-    }
-    @PersistenceContext
-    public void setEntityManager(EntityManager entityManager) {
-        this.entityManager = entityManager;
     }
 	
     @Transactional
@@ -39,10 +36,11 @@ public class PersonDAOImpl implements PersonDao {
 	}
 
 	public List<PersonPO> fetchPersonList(Integer page, Integer numOfRecords) {
-		Query query = entityManager.createQuery("select p from Person p");
+		List<PersonPO> result = null;
+		Query query = entityManager.createQuery("select p from PersonPO p");
 		query.setFirstResult((page-1) * numOfRecords).setMaxResults(numOfRecords);
-		query.getResultList();
-		return null;
+		result = query.getResultList();
+		return result;
 	}
 
 }

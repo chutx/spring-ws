@@ -5,24 +5,15 @@
 	version="2.0">
 	<persistence-unit name="JpaPersistenceUnit"
 		transaction-type="RESOURCE_LOCAL">
-		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<non-jta-data-source>java:jboss/datasources/MySqlDS</non-jta-data-source>
+<!-- 		<exclude-unlisted-classes>false</exclude-unlisted-classes> -->
 		<properties>
-			<!--  <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
 			<property name="hibernate.ejb.naming_strategy" value="org.hibernate.cfg.ImprovedNamingStrategy" />
 			<property name="hibernate.connection.charSet" value="UTF-8" />
 			<property name="hibernate.show_sql" value="true" />
-			<property name="hibernate.format_sql" value="false" /> -->
-			
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/springsch" />
-            <property name="javax.persistence.jdbc.user" value="springapp" />
-            <property name="javax.persistence.jdbc.password" value="springapp" />
-            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
-
-            <property name="eclipselink.logging.level" value="INFO" />
-            <property name="eclipselink.target-database" value="MySQL" />
-            <property name="eclipselink.logging.level" value="INFO" />
+			<property name="hibernate.format_sql" value="false" />
 		</properties>
 	</persistence-unit>
 	

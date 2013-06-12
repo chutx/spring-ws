@@ -26,10 +26,20 @@
 		</layout>
 	</appender>
 
-<!-- 	<category name="com.training"> -->
-<!-- 		<level value="DEBUG" /> -->
-<!-- 		<appender-ref ref="FileAppender" /> -->
-<!-- 	</category> -->
+	<category name="com.training">
+		<level value="DEBUG" />
+		<appender-ref ref="ConsoleAppender" />
+	</category>
+
+	<category name="org.springframework">
+		<level value="INFO" />
+		<appender-ref ref="ConsoleAppender" />
+	</category>
+	
+	<category name="org.hibernate">
+		<level value="INFO" />
+		<appender-ref ref="ConsoleAppender" />
+	</category>
 
 	<logger name="com.training.architecture.java.springwebapp" additivity="true">>
 		<level value="debug"></level>
@@ -44,6 +54,6 @@
 	<root>
 		<priority value="DEBUG" />
 		<appender-ref ref="ConsoleAppender" />
-		<appender-ref ref="FileAppender" />
+<!-- 		<appender-ref ref="FileAppender" /> -->
 	</root>
 </log4j:configuration>

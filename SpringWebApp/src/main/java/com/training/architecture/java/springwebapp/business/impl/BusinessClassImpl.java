@@ -2,6 +2,7 @@ package com.training.architecture.java.springwebapp.business.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.training.architecture.java.springwebapp.business.BusinessClass;
@@ -26,10 +27,12 @@ public class BusinessClassImpl implements BusinessClass {
 		return person.getName();
 	}
 
-	@Transactional
+	@Transactional(propagation=Propagation.REQUIRED)
 	public void savePerson(Person person) {
 		PersonPO po = (PersonPO) personTransformer.transform(person);
 		personDao.addPerson(po);
+		
+		personDao.fetchPersonList(1, 10);
 	}
 
 	public void updatePerson(Person person, Long id) {

@@ -2,11 +2,13 @@ package com.training.architecture.java.springwebapp.dao.test;
 
 import java.util.List;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.training.architecture.java.springwebapp.dao.PersonDao;
@@ -14,10 +16,11 @@ import com.training.architecture.java.springwebapp.entities.PersonPO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { 
-		"classpath:META-INF/spring/orm-context.xml",
+		"classpath:META-INF/spring/orm-context-test.xml",
 		"classpath:META-INF/spring/dao-context.xml"
 		})
 // AbstractTransactionalJUnit4SpringContextTests
+@TransactionConfiguration(defaultRollback=true)
 public class PersonDaoTest {
 	
 	@Autowired
@@ -27,8 +30,9 @@ public class PersonDaoTest {
 
 	@Test
 	public void fetchPersonTest(){
-		Long id = 1L;
-		personDao.fetchPerson(id);
+		Long id = 5L;
+		PersonPO po = personDao.fetchPerson(id);
+		Assert.assertNotNull(po);
 	}
 	
 	@Test

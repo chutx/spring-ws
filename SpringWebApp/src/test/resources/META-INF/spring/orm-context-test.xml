@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="
      http://www.springframework.org/schema/beans 
@@ -11,25 +10,27 @@
      http://www.springframework.org/schema/aop 
      http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
 
-	<bean id="jndiDataSourceLookup" class="org.springframework.jdbc.datasource.lookup.JndiDataSourceLookup"/>
-	
-	<bean id="dataSource" factory-bean="jndiDataSourceLookup" factory-method="getDataSource">
-		<constructor-arg>
-			<value>java:jboss/datasources/MySqlDS</value>
-		</constructor-arg>
+	<!-- don't forget the DataSource -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost/springsch" />
+		<property name="username" value="springapp" />
+		<property name="password" value="springapp" />
 	</bean>
-	
+
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
+		<!-- <property name="persistenceXmlLocation" value="classpath:META-INF/test-persistence.xml"/> -->
 		<property name="packagesToScan" value="com.training.architecture.java.springwebapp.entities" />
 		<property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
 		</property>
 		<property name="jpaProperties">
 			<props>
+				<prop key="hibernate.hbm2ddl.auto">create-drop</prop>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
-				<prop key="hibernate.show_sql">true</prop>
 			</props>
 		</property>
 	</bean>
@@ -41,6 +42,7 @@
     <bean id="persistenceExceptionTranslationPostProcessor"
       class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
       
-	<tx:annotation-driven transaction-manager="transactionManager" />
+	<tx:annotation-driven mode="aspectj"
+		transaction-manager="transactionManager" />
 
 </beans>

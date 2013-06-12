@@ -12,7 +12,7 @@
 		<junit.version>4.10</junit.version>
 		<servlet-api.version>2.5</servlet-api.version>
 		<slf4j.version>1.7.2</slf4j.version>
-		<spring.version>3.0.7.RELEASE</spring.version>
+		<spring.version>3.2.2.RELEASE</spring.version>
 		<aspectj.version>1.6.2</aspectj.version>
 		<jackson.version>1.9.12</jackson.version>
 	</properties>
@@ -56,9 +56,23 @@
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
 			<version>${aspectj.version}</version>
-			<scope>provided</scope>
 		</dependency>
-
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>${aspectj.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjtools</artifactId>
+			<version>${aspectj.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib-nodep</artifactId>
+			<version>2.2</version>
+		</dependency>
 		<!-- Dependencies for web -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -97,19 +111,16 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
 			<version>${spring.version}</version>
-			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
 			<version>${spring.version}</version>
-			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
 			<version>${spring.version}</version>
-			<scope>provided</scope>
 		</dependency>
 
 		<!-- Commons for persistence -->
@@ -141,14 +152,32 @@
 		<dependency>
 			<groupId>org.hibernate.javax.persistence</groupId>
 			<artifactId>hibernate-jpa-2.0-api</artifactId>
-			<version>1.0.1.Final</version>
+			<version>1.0.0.Final</version>
 			<scope>provided</scope>
 		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.hibernate</groupId> -->
+<!-- 			<artifactId>hibernate-validator</artifactId> -->
+<!-- 			<version>4.0.0.GA</version> -->
+<!-- 			<scope>provided</scope> -->
+<!-- 		</dependency> -->
 
+		<!-- 
 		<dependency>
 			<groupId>org.eclipse.persistence</groupId>
 			<artifactId>org.eclipse.persistence.jpa</artifactId>
 			<version>2.5.0</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>eclipselink</artifactId>
+			<version>2.2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>javax.persistence</artifactId>
+			<version>2.0.3</version>
 		</dependency>
 
 		<dependency>
@@ -156,7 +185,7 @@
 			<artifactId>easybeans-modules-persistence-eclipselink-2.x</artifactId>
 			<version>1.2.2</version>
 		</dependency>
-
+ -->
 
 		<!-- MySQL dependencies -->
 		<dependency>
