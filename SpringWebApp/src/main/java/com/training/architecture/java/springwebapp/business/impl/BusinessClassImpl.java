@@ -31,8 +31,6 @@ public class BusinessClassImpl implements BusinessClass {
 	public void savePerson(Person person) {
 		PersonPO po = (PersonPO) personTransformer.transform(person);
 		personDao.addPerson(po);
-		
-		personDao.fetchPersonList(1, 10);
 	}
 
 	public void updatePerson(Person person, Long id) {
