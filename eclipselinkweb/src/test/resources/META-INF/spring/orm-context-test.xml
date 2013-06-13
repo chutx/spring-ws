@@ -33,8 +33,7 @@
 			<bean class="org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter">
 				<property name="showSql" value="true" />
 				<property name="generateDdl" value="false" />
-				<property name="databasePlatform"
-					value="org.eclipse.persistence.platform.database.MySQLPlatform" />
+				<property name="databasePlatform" value="org.eclipse.persistence.platform.database.MySQLPlatform" />
 			</bean>
 		</property>
 		<property name="persistenceProvider">
@@ -48,6 +47,7 @@
 			<props>
 				<prop key="eclipselink.logging.connection">true</prop>
 				<prop key="eclipselink.logging.level">ALL</prop>
+<!-- 				<prop key="eclipselink.ddl-generation">create-tables</prop> -->
 				<prop key="eclipselink.target-database">MySQL</prop>
 				<prop key="eclipselink.weaving">false</prop>
 			</props>

@@ -9,8 +9,8 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.training.architecture.java.app.dao.PersonDao;
 import com.training.architecture.java.app.dao.entities.PersonPO;
+import com.training.architecture.java.app.dao.service.PersonDao;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { 

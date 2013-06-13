@@ -1,4 +1,4 @@
-package com.training.architecture.java.app.dao;
+package com.training.architecture.java.app.dao.service;
 
 import com.training.architecture.java.app.dao.entities.PersonPO;
 
