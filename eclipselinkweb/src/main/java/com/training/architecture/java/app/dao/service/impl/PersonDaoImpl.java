@@ -18,4 +18,8 @@ public class PersonDaoImpl implements PersonDao {
 		entityManager.persist(personPO);
 	}
 
+	public PersonPO fetchPerson(Long id) {
+		return entityManager.find(PersonPO.class, id);
+	}
+
 }
