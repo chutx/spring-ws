@@ -55,7 +55,14 @@
 			<artifactId>spring-aspects</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-		
+		<!--  -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-instrument</artifactId>
+			<version>${spring.version}</version>
+			<scope>test</scope>
+		</dependency>
+		            
 		<!-- Spring dependencies for test -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -64,24 +71,80 @@
 			<scope>test</scope>
 		</dependency>
 		
-		<!-- Eclipselink dependencies -->
-		<dependency>
+ 		<!-- Eclipselink dependencies -->
+ 		<dependency>
 			<groupId>org.eclipse.persistence</groupId>
-			<artifactId>org.eclipse.persistence.jpa</artifactId>
+			<artifactId>eclipselink</artifactId>
 			<version>${eclipselink.version}</version>
+		</dependency>			
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.eclipse.persistence</groupId> -->
+<!-- 			<artifactId>org.eclipse.persistence.jpa</artifactId> -->
+<!-- 			<version>${eclipselink.version}</version> -->
+<!-- 		</dependency> -->
+		 
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.eclipse.persistence</groupId> -->
+<!-- 			<artifactId>javax.persistence</artifactId> -->
+<!-- 			<version>2.1.0</version> -->
+<!-- 		</dependency> -->
+
+		<!-- Hibernate dependencies -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>4.0.0.CR2</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>4.0.0.CR2</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-jpamodelgen</artifactId>
+			<version>1.1.1.Final</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.0-api</artifactId>
+			<version>1.0.0.Final</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- Commons for persistence -->
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.4</version>
 		</dependency>
 		
-		<dependency>
-			<groupId>org.eclipse.persistence</groupId>
-			<artifactId>javax.persistence</artifactId>
-			<version>2.1.0</version>
-		</dependency>
 		<!-- MySQL dependencies -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.10</version>
 		</dependency>
+		
+		<!-- AspectJ dependencies -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>${aspectj.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>${aspectj.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjtools</artifactId>
+			<version>${aspectj.version}</version>
+		</dependency>
+		
 		<!-- needed for spring aop -->
 		<dependency>
 			<groupId>cglib</groupId>

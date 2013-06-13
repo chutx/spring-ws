@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.training.architecture.java.app.dao.PersonDao;
 import com.training.architecture.java.app.dao.entities.PersonPO;
@@ -23,6 +25,7 @@ public class PersonDaoTest {
 	private PersonDao personDao;
 	
 	@Test
+	@Transactional(propagation=Propagation.REQUIRED)
 	public void persistTest(){
 		PersonPO person = createPerson("angel", "Rodriguez");
 		personDao.persistPerson(person);
