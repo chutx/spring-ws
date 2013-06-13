@@ -46,11 +46,6 @@
 		<appender-ref ref="ConsoleAppender"></appender-ref>
 	</logger>
 	
-	<logger name="com.training.architecture.java.basicwebapp.file" additivity="true">>
-		<level value="debug"></level>
-		<appender-ref ref="FileAppender"></appender-ref>
-	</logger>
-	
 	<root>
 		<priority value="DEBUG" />
 		<appender-ref ref="ConsoleAppender" />
