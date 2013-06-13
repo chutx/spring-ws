@@ -32,7 +32,7 @@
 
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<!-- <property name="dataSource" ref="dataSource" /> -->
+<!-- 		<property name="dataSource" ref="dataSource" /> -->
 		<property name="jtaDataSource" ref="dataSource" />
 		<!-- <property name="persistenceXmlLocation" value="classpath:META-INF/test-persistence.xml"/> -->
 		<property name="packagesToScan"
@@ -52,7 +52,7 @@
 		<property name="jpaDialect">
 			<bean class="org.springframework.orm.jpa.vendor.EclipseLinkJpaDialect" />
 		</property>
-		<!-- <property name="persistenceUnitName" value="application"></property> -->
+		<property name="persistenceUnitName" value="application" />
 		<property name="jpaProperties">
 			<props>
 				<prop key="eclipselink.logging.connection">true</prop>
@@ -63,7 +63,7 @@
 				<prop key="eclipselink.weaving">static</prop>
 
 				<prop key="eclipselink.deploy-on-startup">true</prop>
-<!-- 				<prop key="eclipselink.target-server">WebLogic</prop> -->
+				<!-- <prop key="eclipselink.target-server">WebLogic</prop> -->
 				<prop key="eclipselink.target-server">JBoss</prop>
 			</props>
 		</property>
@@ -77,16 +77,12 @@
 <!-- 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"> -->
 <!-- 		<property name="entityManagerFactory" ref="entityManagerFactory" /> -->
 <!-- 	</bean> -->
-<!-- 	<bean id="transactionManager" class="org.springframework.transaction.jta.WebLogicJtaTransactionManager"> -->
-<!-- 	</bean> -->
-	<bean id="transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager">
-	</bean>
+	<!-- <bean id="transactionManager" class="org.springframework.transaction.jta.WebLogicJtaTransactionManager"> -->
+	<!-- </bean> -->
+	<bean id="transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager"/>
 
-	<tx:annotation-driven mode="aspectj"
-		transaction-manager="transactionManager" />
+	<tx:annotation-driven transaction-manager="transactionManager" />
 
-	<bean
-		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
-	<!-- <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" 
-		/> -->
+	<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
 </beans>

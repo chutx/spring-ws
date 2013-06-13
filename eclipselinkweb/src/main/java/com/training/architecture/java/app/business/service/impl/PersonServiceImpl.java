@@ -22,7 +22,7 @@ public class PersonServiceImpl implements PersonService{
 	@Autowired
 	private PersonTransformer personTransformer;
 	
-	@Transactional(propagation=Propagation.REQUIRED)
+	@Transactional(propagation=Propagation.REQUIRED, readOnly=false)
 	public void savePerson(Person person) {
 		PersonPO po = (PersonPO)personTransformer.transform(person);
 		personDao.persistPerson(po);
