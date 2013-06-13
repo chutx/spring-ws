@@ -2,7 +2,8 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xmlns:aop="http://www.springframework.org/schema/aop"
-	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:jee="http://www.springframework.org/schema/jee" 
+	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="
      http://www.springframework.org/schema/beans 
@@ -11,29 +12,38 @@
      http://www.springframework.org/schema/context/spring-context-3.2.xsd
      http://www.springframework.org/schema/tx
      http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+     http://www.springframework.org/schema/jee
+     http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
      http://www.springframework.org/schema/aop 
      http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
 
 	<context:annotation-config />
-	
+
 	<!-- don't forget the DataSource -->
-	<bean id="jndiDataSourceLookup" class="org.springframework.jdbc.datasource.lookup.JndiDataSourceLookup"/>
-	
-	<bean id="dataSource" factory-bean="jndiDataSourceLookup" factory-method="getDataSource">
+	<bean id="jndiDataSourceLookup"
+		class="org.springframework.jdbc.datasource.lookup.JndiDataSourceLookup" />
+
+	<bean id="dataSource" factory-bean="jndiDataSourceLookup"
+		factory-method="getDataSource">
 		<constructor-arg>
-			<value>java:jboss/datasources/MySqlDS</value>
+			<value>datasource/MySqlDS</value>
 		</constructor-arg>
 	</bean>
+
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<property name="dataSource" ref="dataSource" />
+		<!-- <property name="dataSource" ref="dataSource" /> -->
+		<property name="jtaDataSource" ref="dataSource" />
 		<!-- <property name="persistenceXmlLocation" value="classpath:META-INF/test-persistence.xml"/> -->
-		<property name="packagesToScan" value="com.training.architecture.java.app.dao.entities" />
+		<property name="packagesToScan"
+			value="com.training.architecture.java.app.dao.entities" />
 		<property name="jpaVendorAdapter">
-			<bean class="org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter">
+			<bean
+				class="org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter">
 				<property name="showSql" value="true" />
-				<property name="generateDdl" value="false" />
-				<property name="databasePlatform" value="org.eclipse.persistence.platform.database.MySQLPlatform" />
+				<!-- <property name="generateDdl" value="false" /> -->
+				<property name="databasePlatform"
+					value="org.eclipse.persistence.platform.database.MySQLPlatform" />
 			</bean>
 		</property>
 		<property name="persistenceProvider">
@@ -42,30 +52,41 @@
 		<property name="jpaDialect">
 			<bean class="org.springframework.orm.jpa.vendor.EclipseLinkJpaDialect" />
 		</property>
-		<property name="persistenceUnitName" value="application"></property>
+		<!-- <property name="persistenceUnitName" value="application"></property> -->
 		<property name="jpaProperties">
 			<props>
 				<prop key="eclipselink.logging.connection">true</prop>
 				<prop key="eclipselink.logging.level">ALL</prop>
-<!-- 				<prop key="eclipselink.ddl-generation">create-tables</prop> -->
+				<!-- <prop key="eclipselink.logging.logger">JavaLogger</prop> -->
+				<!-- <prop key="eclipselink.ddl-generation">create-tables</prop> -->
 				<prop key="eclipselink.target-database">MySQL</prop>
-				<prop key="eclipselink.weaving">false</prop>
+				<prop key="eclipselink.weaving">static</prop>
+
+				<prop key="eclipselink.deploy-on-startup">true</prop>
+<!-- 				<prop key="eclipselink.target-server">WebLogic</prop> -->
+				<prop key="eclipselink.target-server">JBoss</prop>
 			</props>
 		</property>
-<!-- 		<property name="loadTimeWeaver"> -->
-<!-- 			<bean -->
-<!-- 				class="org.springframework.instrument.classloading.SimpleLoadTimeWeaver " /> -->
-<!-- 		</property> -->
+		<!-- <property name="loadTimeWeaver"> -->
+		<!-- <bean -->
+		<!-- class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver 
+			" /> -->
+		<!-- </property> -->
 	</bean>
 
-	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-		<property name="entityManagerFactory" ref="entityManagerFactory" />
+<!-- 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"> -->
+<!-- 		<property name="entityManagerFactory" ref="entityManagerFactory" /> -->
+<!-- 	</bean> -->
+<!-- 	<bean id="transactionManager" class="org.springframework.transaction.jta.WebLogicJtaTransactionManager"> -->
+<!-- 	</bean> -->
+	<bean id="transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager">
 	</bean>
 
 	<tx:annotation-driven mode="aspectj"
 		transaction-manager="transactionManager" />
 
-	<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+	<bean
+		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
 	<!-- <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" 
 		/> -->
 </beans>
