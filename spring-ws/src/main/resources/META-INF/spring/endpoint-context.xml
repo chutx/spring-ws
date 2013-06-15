@@ -15,15 +15,10 @@
 	<bean id="HolidayRequest"
 		class="org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition"
 		lazy-init="true">
-		<property name="schemaCollection">
+		<property name="schema">
 			<bean
-				class="org.springframework.xml.xsd.commons.CommonsXsdSchemaCollection">
-				<property name="inline" value="true" />
-				<property name="xsds">
-					<list>
-						<value>classpath:ws/hr.xsd</value>
-					</list>
-				</property>
+				class="org.springframework.xml.xsd.SimpleXsdSchema">
+				<property name="xsd" value="classpath:ws/hr.xsd"/>
 			</bean>
 		</property>
 		<property name="portTypeName" value="HolidayRequest" />
