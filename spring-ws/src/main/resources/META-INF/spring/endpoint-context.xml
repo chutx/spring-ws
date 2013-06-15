@@ -13,12 +13,16 @@
 	<sws:annotation-driven />
 
 	<bean id="HolidayRequest"
-		class="org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition"
-		lazy-init="true">
-		<property name="schema">
+		class="org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition" lazy-init="true">
+		<property name="schemaCollection">
 			<bean
-				class="org.springframework.xml.xsd.SimpleXsdSchema">
-				<property name="xsd" value="classpath:ws/hr.xsd"/>
+				class="org.springframework.xml.xsd.commons.CommonsXsdSchemaCollection">
+				<property name="inline" value="true" />
+				<property name="xsds">
+					<list>
+						<value>classpath:ws/hr.xsd</value>
+					</list>
+				</property>
 			</bean>
 		</property>
 		<property name="portTypeName" value="HolidayRequest" />
