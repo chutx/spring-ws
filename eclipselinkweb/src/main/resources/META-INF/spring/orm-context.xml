@@ -23,10 +23,11 @@
 	<bean id="jndiDataSourceLookup"
 		class="org.springframework.jdbc.datasource.lookup.JndiDataSourceLookup" />
 
-	<bean id="dataSource" factory-bean="jndiDataSourceLookup"
-		factory-method="getDataSource">
+	<bean id="dataSource" factory-bean="jndiDataSourceLookup" factory-method="getDataSource">
 		<constructor-arg>
-			<value>datasource/MySqlDS</value>
+			<value>jboss/datasources/MySqlDS</value>
+<!-- 			Para weblogic tiene que ser asi datasource.MySqlDS-->
+<!-- 			<value>datasource/MySqlDS</value> -->
 		</constructor-arg>
 	</bean>
 
@@ -38,8 +39,7 @@
 		<property name="packagesToScan"
 			value="com.training.architecture.java.app.dao.entities" />
 		<property name="jpaVendorAdapter">
-			<bean
-				class="org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter">
 				<property name="showSql" value="true" />
 				<!-- <property name="generateDdl" value="false" /> -->
 				<property name="databasePlatform"

@@ -27,7 +27,7 @@ public class PersonDaoTest {
 	@Test
 	@Transactional(propagation=Propagation.REQUIRED)
 	public void persistTest(){
-		PersonPO person = createPerson("angel", "Rodriguez");
+		PersonPO person = createPerson("angel", "x");
 		personDao.persistPerson(person);
 		person = createPerson("firstName", "lastName");
 	}

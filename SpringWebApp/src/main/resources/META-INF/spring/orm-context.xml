@@ -15,7 +15,7 @@
 	
 	<bean id="dataSource" factory-bean="jndiDataSourceLookup" factory-method="getDataSource">
 		<constructor-arg>
-			<value>java:jboss/datasources/MySqlDS</value>
+			<value>jboss/datasources/MySqlDS</value>
 		</constructor-arg>
 	</bean>
 	

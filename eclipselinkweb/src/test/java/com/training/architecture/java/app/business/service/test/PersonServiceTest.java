@@ -17,7 +17,7 @@ import com.training.architecture.java.app.domain.Person;
 		"classpath:META-INF/spring/dao-context.xml",
 		"classpath:META-INF/spring/business-context.xml"
 		})
-@TransactionConfiguration(defaultRollback=false)
+@TransactionConfiguration(defaultRollback=true)
 public class PersonServiceTest {
 
 	@Autowired

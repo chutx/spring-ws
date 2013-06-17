@@ -19,7 +19,7 @@ public class PersonPO implements Serializable {
 	@Column(name="id")
 	@TableGenerator(name="person_id", table="ids_sequences", 
 	pkColumnName="table_name", pkColumnValue="person_gen", 
-	valueColumnName="seq_val", initialValue=4,
+	valueColumnName="seq_val", initialValue=1,
 	allocationSize=1, schema="springsch")
 	@GeneratedValue(generator="person_id")
 	private Long id;

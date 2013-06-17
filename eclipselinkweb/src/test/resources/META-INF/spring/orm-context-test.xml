@@ -12,7 +12,7 @@
      http://www.springframework.org/schema/tx
      http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
      http://www.springframework.org/schema/aop 
-     http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+     http://www.springframework.org/schema/aop/spring-aop-3.2.xsd" >
 
 	<context:annotation-config />
 	
@@ -45,8 +45,8 @@
 		<property name="persistenceUnitName" value="application"></property>
 		<property name="jpaProperties">
 			<props>
-				<prop key="eclipselink.logging.connection">true</prop>
-				<prop key="eclipselink.logging.level">ALL</prop>
+				<prop key="eclipselink.logging.connection">false</prop>
+				<prop key="eclipselink.logging.level">FINE</prop>
 <!-- 				<prop key="eclipselink.ddl-generation">create-tables</prop> -->
 				<prop key="eclipselink.target-database">MySQL</prop>
 				<prop key="eclipselink.weaving">false</prop>
@@ -62,8 +62,7 @@
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
 
-	<tx:annotation-driven mode="aspectj"
-		transaction-manager="transactionManager" />
+	<tx:annotation-driven transaction-manager="transactionManager" />
 
 	<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
 	<!-- <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" 

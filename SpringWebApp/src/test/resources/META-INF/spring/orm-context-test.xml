@@ -19,8 +19,7 @@
 		<property name="password" value="springapp" />
 	</bean>
 
-	<bean id="entityManagerFactory"
-		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<!-- <property name="persistenceXmlLocation" value="classpath:META-INF/test-persistence.xml"/> -->
 		<property name="packagesToScan" value="com.training.architecture.java.springwebapp.entities" />
@@ -42,7 +41,6 @@
     <bean id="persistenceExceptionTranslationPostProcessor"
       class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
       
-	<tx:annotation-driven mode="aspectj"
-		transaction-manager="transactionManager" />
+	<tx:annotation-driven mode="aspectj" transaction-manager="transactionManager" />
 
 </beans>
