@@ -12,6 +12,8 @@
 	<properties>
 		<slf4j.version>1.7.2</slf4j.version>
 		<spring.ws.version>2.0.0.RELEASE</spring.ws.version>
+		<spring.version>3.0.5.RELEASE</spring.version>
+		<junit.version>4.10</junit.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -24,6 +26,22 @@
 	</dependencyManagement>
 
 	<dependencies>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jms</artifactId>
+			<version>${spring.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Spring WS dependency -->
 		<dependency>
 			<groupId>org.springframework.ws</groupId>
 			<artifactId>spring-ws-core</artifactId>
@@ -31,10 +49,35 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.springframework.ws</groupId>
+			<artifactId>spring-ws-support</artifactId>
+			<version>${spring.ws.version}</version>
+		</dependency>
+
+
+		<dependency>
 			<groupId>org.apache.ws.commons.schema</groupId>
 			<artifactId>XmlSchema</artifactId>
 			<version>1.4.3</version>
 		</dependency>
+
+		<!-- the ActiveMQ client with connection pooling -->
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-client</artifactId>
+			<version>5.8.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-camel</artifactId>
+			<version>5.8.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-pool</artifactId>
+			<version>5.8.0</version>
+		</dependency>
+
 		<!-- Logging dependencies -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -53,11 +96,19 @@
 			<artifactId>jcl-over-slf4j</artifactId>
 			<version>${slf4j.version}</version>
 		</dependency>
+
+		<!-- Dependencies for testing -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
-	
+
 	<build>
 		<finalName>spring-ws</finalName>
-		
+
 		<plugins>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>

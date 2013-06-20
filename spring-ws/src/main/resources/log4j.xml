@@ -14,22 +14,22 @@
 	</appender>
 
 	<logger name="com.mycompany" additivity="true">>
-		<level value="debug"></level>
+		<level value="INFO"></level>
 		<appender-ref ref="consoleAppender"></appender-ref>
 	</logger>
 	
 	<logger name="org.springframework" additivity="true">>
-		<level value="debug"></level>
+		<level value="INFO"></level>
 		<appender-ref ref="consoleAppender"></appender-ref>
 	</logger>
 	
 	<logger name="org.eclipse" additivity="true">>
-		<level value="debug"></level>
+		<level value="INFO"></level>
 		<appender-ref ref="consoleAppender"></appender-ref>
 	</logger>
 	
 	<root>
-		<priority value="DEBUG" />
+		<priority value="INFO" />
 		<appender-ref ref="ConsoleAppender" />
 <!-- 		<appender-ref ref="FileAppender" /> -->
 	</root>
