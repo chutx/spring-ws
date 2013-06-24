@@ -1,6 +1,6 @@
 package com.mycompany.hr.jms;
 
-public interface PublisherJms {
+public interface SenderJms {
 
 	void publishMessage(String message);
 }

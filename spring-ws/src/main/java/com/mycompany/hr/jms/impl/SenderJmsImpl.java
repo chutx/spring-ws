@@ -4,11 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Service;
 
-import com.mycompany.hr.jms.PublisherJms;
+import com.mycompany.hr.jms.SenderJms;
 import com.mycompany.hr.jms.QueueMessageSender;
 
 @Service
-public class PublisherJmsImpl implements PublisherJms {
+public class SenderJmsImpl implements SenderJms {
 
 	@Autowired
 	private QueueMessageSender messageSender;

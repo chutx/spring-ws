@@ -11,10 +11,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration(locations={
 		"classpath:META-INF/spring/jms-context-test.xml"
 })
-public class PublisherTest {
+public class SenderTest {
 
 	@Autowired
-	private PublisherJms publisherJms;
+	private SenderJms publisherJms;
 	
 	@Test
 	public void testConfig(){
