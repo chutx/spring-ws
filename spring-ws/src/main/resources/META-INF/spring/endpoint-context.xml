@@ -14,23 +14,30 @@
 	<context:component-scan base-package="com.mycompany.hr.service" />
 	<sws:annotation-driven />
 
-	<bean id="HolidayRequest"
-		class="org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition" lazy-init="true">
-		<property name="schemaCollection">
-<!-- 			<bean class="org.springframework.xml.xsd.SimpleXsdSchema"> -->
-			<bean class="org.springframework.xml.xsd.commons.CommonsXsdSchemaCollection">
-				<property name="inline" value="true" />
-				<property name="xsds">
-					<list>
-						<value>classpath:ws/hr.xsd</value>
-					</list>
-				</property>
-			</bean>
-		</property>
-		<property name="portTypeName" value="HolidayRequest" />
-		<property name="serviceName" value="HumanResourceServices" />
-		<property name="locationUri" value="endpoints" />
-	</bean>
+	<sws:dynamic-wsdl id="HumanResourcesWS" portTypeName="HumanResourcesPort" 
+	locationUri="/endpoints/HumanResourcesWS" serviceName="HumanResourcesService" >
+		<sws:xsd location="classpath:ws/hr.xsd"/>
+	</sws:dynamic-wsdl>
+	
+<!-- 	<sws:static-wsdl location="" /> -->
+
+<!-- 	<bean id="HumanResourceWS" -->
+<!-- 		class="org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition" lazy-init="true"> -->
+<!-- 		<property name="schemaCollection"> -->
+<!--  			<bean class="org.springframework.xml.xsd.SimpleXsdSchema">  -->
+<!-- 			<bean class="org.springframework.xml.xsd.commons.CommonsXsdSchemaCollection"> -->
+<!-- 				<property name="inline" value="true" /> -->
+<!-- 				<property name="xsds"> -->
+<!-- 					<list> -->
+<!-- 						<value>classpath:ws/hr.xsd</value> -->
+<!-- 					</list> -->
+<!-- 				</property> -->
+<!-- 			</bean> -->
+<!-- 		</property> -->
+<!-- 		<property name="portTypeName" value="HumanResourcesPort" /> -->
+<!-- 		<property name="serviceName" value="HumanResourceService" /> -->
+<!-- 		<property name="locationUri" value="/endpoints/" /> -->
+<!-- 	</bean> -->
 
 <!-- 	<bean -->
 <!-- 		class="org.springframework.ws.server.endpoint.mapping.PayloadRootAnnotationMethodEndpointMapping"> -->

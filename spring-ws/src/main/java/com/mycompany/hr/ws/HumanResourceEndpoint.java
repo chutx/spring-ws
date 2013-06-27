@@ -23,10 +23,10 @@ public class HumanResourceEndpoint  {
 	
 	@PayloadRoot(namespace=NAMESPACE_URI, localPart="HolidayRequest")
 	public void handleHolidayRequest(@RequestPayload HolidayRequest holidayRequest){
-		logger.debug("HolidayRequest ========= " +holidayRequest);
+		logger.info("HolidayRequest ========= " +holidayRequest);
 	}
 	
-	@PayloadRoot(namespace=NAMESPACE_URI, localPart="save")
+	@PayloadRoot(namespace=NAMESPACE_URI, localPart="SecondRequest")
 	public void handleHolidayRequestTwo(@RequestPayload HolidayType holidayType){
 		logger.debug("HolidayRequest ========= " +holidayType);
 	}
