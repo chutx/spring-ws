@@ -13,14 +13,6 @@
 	http://www.springframework.org/schema/data/neo4j
 	http://www.springframework.org/schema/data/neo4j/spring-neo4j.xsd">
 
-	<neo4j:config graphDatabaseService="graphDatabaseService" />
-
-	<bean id="graphDatabaseService" destroy-method="shutdown"
-		factory-bean="graphDatabaseFactory" factory-method="newEmbeddedDatabase">
-		<constructor-arg value="data/graph.db" />
-	</bean>
-	<bean id="graphDatabaseFactory" class="org.neo4j.graphdb.factory.GraphDatabaseFactory" />
-
-	<tx:annotation-driven transaction-manager="neo4jTransactionManager" mode="aspectj" />
-
+	<neo4j:repositories base-package=""/>
+	
 </beans>
