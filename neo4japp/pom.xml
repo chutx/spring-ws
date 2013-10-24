@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.training.neo4j</groupId>
 	<artifactId>neo4japp</artifactId>
@@ -11,8 +10,9 @@
 
 	<modules>
 		<module>neo4japp-dao</module>
+    	<module>neo4japp-business</module>
 		<module>neo4japp-web</module>
-	</modules>
+  </modules>
 
 	<properties>
 		<spring.version>3.2.3.RELEASE</spring.version>
@@ -124,6 +124,7 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	
 	<build>
 		<finalName>neo4japp</finalName>
 	</build>
