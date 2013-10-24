@@ -22,6 +22,8 @@ public class Person extends BaseEntity {
 	private Person bestFriend;
 	@RelatedTo(direction=Direction.BOTH, type=FRIEND_REL)
 	private Set<Person> friends;
+	@RelatedTo(direction=Direction.OUTGOING, type=Country.COUNTRY_REL)
+	private Country country;
 	
 	/* Constructors */
 	public Person() {
@@ -55,6 +57,12 @@ public class Person extends BaseEntity {
 	}
 	public void setFriends(Set<Person> friends) {
 		this.friends = friends;
+	}
+	public Country getCountry() {
+		return country;
+	}
+	public void setCountry(Country country) {
+		this.country = country;
 	}
 	
 	public void addFriend(Person friend){
