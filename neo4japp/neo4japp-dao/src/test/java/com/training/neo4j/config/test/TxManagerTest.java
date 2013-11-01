@@ -39,7 +39,6 @@ public class TxManagerTest {
 	
 	@Test
 	@Transactional
-	@Rollback
 	public void templateTest(){
 		Node node = neo4jTemplate.createNode();
 		Assert.assertNotNull(node);

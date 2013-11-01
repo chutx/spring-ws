@@ -6,7 +6,9 @@ public abstract class BaseEntity {
 
 	@GraphId
 	private Long nodeId;
-
+	
+	public BaseEntity() { }
+	
 	public Long getNodeId() {
 		return nodeId;
 	}

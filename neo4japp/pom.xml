@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.training.neo4j</groupId>
 	<artifactId>neo4japp</artifactId>
@@ -9,16 +10,21 @@
 	<url>http://maven.apache.org</url>
 
 	<modules>
+		<module>neo4japp-test-util</module>
 		<module>neo4japp-dao</module>
-    	<module>neo4japp-business</module>
+		<module>neo4japp-business</module>
 		<module>neo4japp-web</module>
-  </modules>
+	</modules>
 
 	<properties>
 		<spring.version>3.2.3.RELEASE</spring.version>
+		<spring.security.version>3.1.3.RELEASE</spring.security.version>
+
 		<spring.data.neo4j>2.3.0.RELEASE</spring.data.neo4j>
 		<neo4j.version>1.9.4</neo4j.version>
 
+		<slf4j.version>1.7.2</slf4j.version>
+		<junit.version>4.11</junit.version>
 	</properties>
 
 	<dependencyManagement>
@@ -53,10 +59,64 @@
 				<artifactId>spring-tx</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
+			<!-- Spring dependencies for web -->
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-webmvc</artifactId>
 				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-web</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<!-- Dependencies for spring security -->
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-core</artifactId>
+				<version>${spring.security.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-config</artifactId>
+				<version>${spring.security.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-web</artifactId>
+				<version>${spring.security.version}</version>
+			</dependency>
+
+			<!-- Dependencies for spring data -->
+			<dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-neo4j</artifactId>
+				<version>${spring.data.neo4j}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-neo4j-rest</artifactId>
+				<version>${spring.data.neo4j}</version>
+			</dependency>
+
+			<!-- Dependency for neo4j -->
+			<dependency>
+				<groupId>org.neo4j</groupId>
+				<artifactId>neo4j</artifactId>
+				<version>${neo4j.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.neo4j</groupId>
+				<artifactId>neo4j-shell</artifactId>
+				<version>${neo4j.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.neo4j.app</groupId>
+				<artifactId>neo4j-server</artifactId>
+				<version>${neo4j.version}</version>
 			</dependency>
 
 			<!-- -->
@@ -65,18 +125,15 @@
 				<artifactId>validation-api</artifactId>
 				<version>1.0.0.GA</version>
 			</dependency>
-
-			<!-- -->
 			<dependency>
-				<groupId>org.springframework.data</groupId>
-				<artifactId>spring-data-neo4j</artifactId>
-				<version>${spring.data.neo4j}</version>
+				<groupId>javax.servlet</groupId>
+				<artifactId>servlet-api</artifactId>
+				<version>2.5</version>
 			</dependency>
-
 			<dependency>
-				<groupId>org.neo4j</groupId>
-				<artifactId>neo4j</artifactId>
-				<version>${neo4j.version}</version>
+				<groupId>javax.servlet</groupId>
+				<artifactId>jstl</artifactId>
+				<version>1.2</version>
 			</dependency>
 
 			<!-- -->
@@ -88,29 +145,12 @@
 			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
-				<version>4.11</version>
+				<version>${junit.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
 	<dependencies>
-
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-core</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-beans</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-aop</artifactId>
-		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -124,7 +164,7 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-	
+
 	<build>
 		<finalName>neo4japp</finalName>
 	</build>

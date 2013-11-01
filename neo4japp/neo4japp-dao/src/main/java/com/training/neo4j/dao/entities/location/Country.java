@@ -1,9 +1,12 @@
-package com.training.neo4j.dao.entities;
+package com.training.neo4j.dao.entities.location;
 
 import org.neo4j.graphdb.Direction;
 import org.springframework.data.neo4j.annotation.GraphProperty;
 import org.springframework.data.neo4j.annotation.NodeEntity;
 import org.springframework.data.neo4j.annotation.RelatedTo;
+
+import com.training.neo4j.dao.entities.BaseEntity;
+import com.training.neo4j.dao.entities.Friendship;
 
 @NodeEntity
 public class Country extends BaseEntity {
@@ -13,7 +16,7 @@ public class Country extends BaseEntity {
 	@GraphProperty
 	private String name;
 	@RelatedTo(direction=Direction.INCOMING, type=COUNTRY_REL)
-	private Iterable<Person> people;
+	private Iterable<Friendship> people;
 	
 	public Country() {
 	}
@@ -28,10 +31,10 @@ public class Country extends BaseEntity {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Iterable<Person> getPeople() {
+	public Iterable<Friendship> getPeople() {
 		return people;
 	}
-	public void setPeople(Iterable<Person> people) {
+	public void setPeople(Iterable<Friendship> people) {
 		this.people = people;
 	}
 	

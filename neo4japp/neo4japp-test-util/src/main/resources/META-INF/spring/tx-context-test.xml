@@ -18,9 +18,9 @@
 		</bean>
 		<bean id="graphDatabaseService" destroy-method="shutdown"
 			factory-bean="graphDatabaseFactory" factory-method="newEmbeddedDatabase">
-			<constructor-arg value="data/graph2.db" />
+			<constructor-arg value="data/graph.db" />
 		</bean>
-		<bean id="graphDatabaseFactory" class="org.neo4j.graphdb.factory.GraphDatabaseFactory" />
+		<bean id="graphDatabaseFactory" class="com.training.neo4j.db.factory.Neo4JDBFactory" />
 
 		<tx:annotation-driven transaction-manager="neo4jTransactionManager"
 			mode="aspectj" />
