@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.training.neo4j.business.service.PersonService;
-import com.training.neo4j.dao.entities.Country;
-import com.training.neo4j.dao.entities.Person;
+import com.training.neo4j.dao.entities.Friendship;
+import com.training.neo4j.dao.entities.location.Country;
 import com.training.neo4j.dao.repositories.CountryRepository;
 import com.training.neo4j.dao.repositories.PersonRepository;
 
@@ -20,15 +20,15 @@ public class PersonServiceImpl implements PersonService {
 	private CountryRepository countryRepository;
 	
 	@Transactional
-	public Person setCountryForPerson(Person person, Country country) {
-		Person result = null;
+	public Friendship setCountryForPerson(Friendship person, Country country) {
+		Friendship result = null;
 		person.setCountry(country);
 		result = personRepository.save(person);
 		return result;
 	}
 
 	@Transactional
-	public Set<Person> getPeopleFromCountry(Country country) {
+	public Set<Friendship> getPeopleFromCountry(Country country) {
 		return null;
 	}
 
